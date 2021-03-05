@@ -1,6 +1,6 @@
 ---
 title: "Simulation-based inference - confidence intervals"
-author: ""
+author: "Jaden Snyder"
 date: "March 3, 2021"
 output: html_document
 editor_options: 
@@ -28,6 +28,8 @@ knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE,
 ```{r packages}
 library(tidyverse)
 library(infer)
+library(usethis)
+use_git_config(user.name= "jadensnyder", user.email="jaden.snyder@duke.edu")
 ```
 
 ## Big picture
@@ -189,7 +191,7 @@ Consider 20 1-bedroom apartments that were randomly selected on
 Craigslist Manhattan from apartments listed as "by owner".
 
 ```{r data_manhattan}
-manhattan <- read_csv("~/manhattan.csv")
+manhattan <- read_csv("~/R/lecture-note-class-13-jadensnyder/manhattan.csv")
 ```
 
 Consider 3-10 day survival of mice randomized to various
@@ -250,10 +252,10 @@ Create a 95% bootstrap confidence interval for the population *mean* price of
 
 First, identify the following:
 
-- Population: 
-- Parameter of interest:
-- Sample:
-- Sample size:
+- Population: 1 bedroom apartments in Manhatten
+- Parameter of interest: mean price
+- Sample: 1 bedroom apartments
+- Sample size: 20
 
 To create our confidence interval, we'll follow the four-step bootstrap
 scheme outlined in the slides using functions from `infer`.
@@ -339,7 +341,11 @@ population *median* price of 1-bedroom apartments in Manhattan. Do this in a
 single code chunk with a single pipeline. Provide an interpretation of your result.
 
 ```{r practice_1}
-
+boot_means <- manhattan %>% 
+  specify(response = rent) %>% 
+  generate(reps = 10000, type = "bootstrap") %>% 
+  calculate(stat = "median")
+boot_means
 ```
 
 ### A confidence interval for the population proportion - $p$
