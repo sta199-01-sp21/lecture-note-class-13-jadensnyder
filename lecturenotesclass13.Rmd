@@ -266,7 +266,8 @@ scheme outlined in the slides using functions from `infer`.
 2. **Calculate the bootstrap statistic** - a statistic such as mean, median,
    proportion, slope, etc. computed from the bootstrap samples.
 
-3. **Repeat steps (1) and (2) many times to create a bootstrap distribution** - i.e., a distribution of bootstrap statistics.
+3. **Repeat steps (1) and (2) many times to create a bootstrap distribution** - 
+i.e., a distribution of bootstrap statistics.
 
 4. **Calculate the bounds of the XX% confidence interval** as the middle XX% 
    of the bootstrap distribution.
@@ -338,7 +339,8 @@ What does this mean?
 
 Use `infer` functions to create a 95% bootstrap confidence interval for the 
 population *median* price of 1-bedroom apartments in Manhattan. Do this in a
-single code chunk with a single pipeline. Provide an interpretation of your result.
+single code chunk with a single pipeline. Provide an interpretation of your 
+result.
 
 ```{r practice_1}
 boot_means <- manhattan %>% 
@@ -351,7 +353,9 @@ boot_means
 
 ### A confidence interval for the population proportion - $p$
 
-Consider the mice radiation dataset. Suppose we want to compute a 95% confidence interval for the proportion of mice that died while not on the treatment,regardless of the dose.
+Consider the mice radiation dataset. Suppose we want to compute a 95% confidence
+interval for the proportion of mice that died while not on the treatment,
+regardless of the dose.
 
 First, identify the following:
 
@@ -387,7 +391,9 @@ visualise(boot_prop) +
 
 #### Practice
 
-Consider the mice radiation results. Suppose we want to compute a 90% confidence interval for the proportion of mice that lived while on the treatment, regardless of the dose.
+Consider the mice radiation results. Suppose we want to compute a 90% confidence 
+interval for the proportion of mice that lived while on the treatment, 
+regardless of the dose.
 
 ```{r practice_2_bootstrap}
 boot_prop <- mice %>% 
